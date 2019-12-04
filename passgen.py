@@ -14,7 +14,9 @@ def generate(
         include_lettrers = True,
         include_digits = True,
         extra = None):
+
     rand = random.SystemRandom()
+
     if chars is None:
         chars = ''
         if include_lettrers:
@@ -23,6 +25,7 @@ def generate(
             chars += string.digits
         if extra is not None:
             chars += extra
+
     return ''.join(rand.choice(chars) for i in range(length))
 
 if __name__ == '__main__':
