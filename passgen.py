@@ -25,9 +25,5 @@ def generate(
             chars += extra
     return ''.join(rand.choice(chars) for i in range(length))
 
-assert len(generate()) == 30
-assert len(generate(length = 20)) == 20
-
-
 if __name__ == '__main__':
     print(generate(extra='_'))
