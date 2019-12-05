@@ -22,3 +22,12 @@ def read_file(file):
 def read_file_name(name):
     with open(name, 'rb', 0) as file:
         return read_file(file)
+
+def get_signed_string(signed):
+    return 'signed' if signed else 'unsigned'
+
+def read_int(infile, *, size = 1, byteorder = 'big', signed = False):
+    _buffer = infile.read(size)
+    if len(_buffer) != size:
+        raise EOFError('reading {} byte {} int'.format(size, get_signed_string(signed)))
+    return int.from_bytes(_buffer, byteorder, signed = signed)
