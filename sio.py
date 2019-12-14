@@ -8,6 +8,7 @@ def get_file_size(file):
     file.seek(0, io.SEEK_END)
     size = file.tell()
     file.seek(0, io.SEEK_SET)
+    return size
 
 def read_file(file):
     size = get_file_size(file)
@@ -23,11 +24,9 @@ def read_file_name(name):
     with open(name, 'rb', 0) as file:
         return read_file(file)
 
-def get_signed_string(signed):
-    return 'signed' if signed else 'unsigned'
-
 def read_int(infile, *, size = 1, byteorder = 'big', signed = False):
     _buffer = infile.read(size)
     if len(_buffer) != size:
-        raise EOFError('reading {} byte {} int'.format(size, get_signed_string(signed)))
+        raise EOFError('reading {} byte {} int'.format(size, 'signed' if signed else 'unsigned'))
     return int.from_bytes(_buffer, byteorder, signed = signed)
+
