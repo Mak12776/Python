@@ -4,11 +4,6 @@ import os
 import string
 import math
 
-chars = string.ascii_letters + string.digits + '_'
-
-def lcm(a, b):
-    return a * b // math.gcd(a, b)
-
 def generate(
         chars = None, length = 30,
         include_lettrers = True,
@@ -27,6 +22,8 @@ def generate(
             chars += extra
 
     return ''.join(rand.choice(chars) for i in range(length))
+
+__all__ = ['generate']
 
 if __name__ == '__main__':
     print(generate(extra='_'))

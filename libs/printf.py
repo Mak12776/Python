@@ -13,4 +13,4 @@ def printf_line(fmt, *args, **kwargs):
 def print_sep(char = '-', width = 80):
     print(char * width)
 
-__all__ = ['printf', 'printf_line', 'print_sep']
+__all__ = ['printf', 'printf_error', 'printf_line', 'print_sep']
