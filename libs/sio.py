@@ -2,7 +2,7 @@
 import sys
 import io
 
-#   some IO functions
+#   Simple IO
 
 def get_file_size(file):
     file.seek(0, io.SEEK_END)
@@ -24,9 +24,12 @@ def read_file_name(name):
     with open(name, 'rb', 0) as file:
         return read_file(file)
 
-def read_int(infile, *, size = 1, byteorder = 'big', signed = False):
+def count_lines(name):
+    with open(name, 'rt') as infile:
+        infile.read().count('\n')
+
+def read_int(infile, size, byteorder = 'big', signed = False):
     _buffer = infile.read(size)
     if len(_buffer) != size:
         raise EOFError('reading {} byte {} int'.format(size, 'signed' if signed else 'unsigned'))
     return int.from_bytes(_buffer, byteorder, signed = signed)
-
