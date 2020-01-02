@@ -1,13 +1,8 @@
 
 import sys
-from libs.printf import *
+from libs.pygene import *
 
 
-def main(argv):
-	if len(argv) != 2:
-		printf_line("usage: {} [FILE]", argv[0])
-		return 0
-	with open(argv[1], 'rt') as infile:
-		print(infile.read().count('\n'))
+node = Function('sum', ['a', 'b'], [])
 
-main(sys.argv)
+
